@@ -1,0 +1,75 @@
+<div class="container m-5 mx-auto" style="display: block;">
+      <div *ngIf="genreArray.length !=0 " class="container TransparentBox m-5 border border-primary rounded mx-auto" style="display: inline-block;">
+            <div class="row m-3 mx-auto" style="background-color: rgb(209, 206, 206);box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+              <div class="col-sm-12">
+                <h1 class="text-center mx-auto" style="color: red;font-weight: bolder;font-display: initial;">List of Genres</h1>
+              </div>
+            </div>
+            <div class="row m-4">
+              <div class="col-mid-12 mx-auto  ">
+                <button type="button" class="btn btn-warning" (click)="onAddGenre(null)">Add Genre</button>
+              </div>
+            </div>
+            <div class="row m-4">
+            <div class="col-mid-12 mat-elevation-z8" style="content: block;font-weight: bolder; font-size: larger;">
+              <mat-form-field>
+                <mat-label>Filter</mat-label>
+                <input matInput placeholder="filter" (keyup)="filterChanged($event)">
+              </mat-form-field>
+              <mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="columnIndex">
+                  <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+                  <mat-cell *matCellDef="let row; let i = index">
+                    {{this.paginator.pageIndex == 0 ? i + 1 : 1 + i + this.paginator.pageIndex * this.paginator.pageSize}}
+                  </mat-cell>
+                </ng-container>
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+                </ng-container>
+
+                <!-- Genre Name Column -->
+                <ng-container matColumnDef="genreName">
+
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Genre Name </mat-header-cell>
+                  <mat-cell *matCellDef="let row">
+                    <div *ngIf="row.isEdit">
+                      <input type="text" [(ngModel)]="row.genreName" class="form-control"/>
+                    </div>
+                    <div *ngIf="!row.isEdit">
+                      {{row.genreName}}
+                    </div>
+                  </mat-cell>
+                </ng-container>
+
+                <!-- Actions Column -->
+                <ng-container matColumnDef="actions">
+                  <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                  <mat-cell *matCellDef="let row">
+                    <div *ngIf="row.isEdit">
+                      <button type="submit" class="btn btn-success"(click)="onUpdate(row)">Update</button>
+                      &nbsp;
+                      <button type="button" class="btn btn-warning" (click)="onCancel(row)">Cancel</button>
+                    </div>
+                    <div *ngIf="!row.isEdit">
+                      <button class="btn btn-primary" (click)="onEditGenre(row)">Edit</button>
+                      &nbsp;
+                      <button class="btn btn-danger" (click)="onDeleteGenre(row)">Delete</button>
+                    </div>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+              <mat-paginator #paginator [length]="100" [pageSizeOptions]="[5, 10, 15]"
+                      showFirstLastButtons
+                      aria-label="Select page">
+        </mat-paginator>
+        </div>
+            </div>
+      </div>
+</div>

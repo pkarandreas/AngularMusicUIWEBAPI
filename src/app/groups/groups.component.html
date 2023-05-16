@@ -1,0 +1,78 @@
+<div class="container m-5mx-auto" style="display: block;">
+  <div *ngIf="genresArray.length !=0 && groupArray.length !=0" class="container TransparentBox m-5 border border-primary rounded mx-auto" style="display: inline-block;">
+          <!-- <div class="row m-3 mx-auto" style="background-color: rgb(209, 206, 206);box-shadow: 6px 6px rgb(86, 86, 86);"> -->
+            <div class="row m-3 mx-auto" style="background-color: rgb(209, 206, 206);box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <div class="col-sm-12">
+              <h1 class="text-center" style="color: red;font-weight: bolder;">List of Groups</h1>
+            </div>
+          </div>
+          <div class="row m-4">
+            <div class="col-mid-12 mx-auto">
+              <button type="button" class="btn btn-warning" (click)="onAddEditGroup(null)">Add Group</button>
+            </div>
+          </div>
+          <div class="row m-4">
+              <div class="col-mid-12">
+                <table datatable [dtOptions]="dataTableOptions" [dtTrigger]="dtTrigger" class="table table-striped border border-primary">
+                  <thead>
+                    <tr>
+                    <th>No.</th>
+                    <th>ID</th>
+                    <th>Group Name</th>
+                    <th>GENRE</th>
+                    <th class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let group of groupArray; let i =index">
+                      <td>{{i+1}}</td>
+                      <td>{{group.id}}</td>
+                      <td>{{group.groupName }}</td>
+                      <td>{{ getGenreString(group.groupGenreID) }}</td>
+                      <td class="text-center align-middle">
+                        <div class="btn-group">
+                          &nbsp;
+                          <button class="btn btn-primary" (click)="onAddEditGroup(group)">Edit</button>
+                          &nbsp;
+                          <button class="btn btn-danger" (click)="onDeleteGroup(group)">Delete</button>
+                          &nbsp;
+                          <button class="btn btn-info" (click)="onSongsHandler(group)">Details</button>
+                          &nbsp;
+                          <button class="btn btn-success" (click)="onAddSong(group)">Add Song</button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+          </div>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

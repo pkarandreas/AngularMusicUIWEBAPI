@@ -1,0 +1,44 @@
+<h3 mat-dialog-title class="Title text-center">{{title}}</h3>
+  <mat-dialog-content>
+    <div *ngIf="group"  class="row">
+      <div class="col-mid-12">
+        <h2 class="text-center" style="color: red;font-weight: bolder;">{{group.groupName}}</h2>
+        <div class="row m-4">
+          <div class="col-sm-12">
+            <p class="border border-primary rounded">{{group.description}}</p>
+          </div>
+        </div>
+        <br>
+        <div *ngIf="group.songs.length != 0">
+        <table datatable [dtOptions]="dataTableOptions" [dtTrigger]="dtTrigger" class="table table-striped border border-primary">
+          <thead>
+            <tr>
+            <th>No.</th>
+            <th>ID</th>
+            <th>Song Name</th>
+            <th class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let song of group.songs; let i =index">
+              <td>{{i+1}}</td>
+              <td>{{song.id}}</td>
+              <td><a [href]="song.songURL" target="_blank">{{song.songName }}</a></td>
+              <td class="text-center align-middle">
+                <div class="btn-group">
+                  &nbsp;
+                  <button class="btn btn-primary" (click)="onEditSong(group,'e',song.id)">Edit</button>
+                  &nbsp;
+                  <button class="btn btn-danger" (click)="onDeleteSong(song)">Delete</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" mat-dialog-close mat-dialog-close="close">Close</button>
+  </mat-dialog-actions>

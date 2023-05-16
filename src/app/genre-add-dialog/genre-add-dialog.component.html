@@ -1,0 +1,24 @@
+<form [formGroup]="genreForm" (submit)="onSubmitForm()" >
+  <h4 mat-dialog-title class="Title text-center">Add New Genre</h4>
+  <mat-dialog-content>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Genre Name Column -->
+          <div class="row m-2">
+            <div class="col-6">
+              <label for="genreName">Genre Name :</label>
+            </div>
+            <div class="col-6">
+              <input type="text" formControlName="genreName" class="form-control">
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button type="submit" mat-raised-button color="primary">Save</button>
+    <button mat-raised-button color="accent"  mat-dialog-close mat-dialog-close="cancel"><mat-icon fontIcon="cancel"></mat-icon>Cancel</button>
+  </mat-dialog-actions>
+</form>

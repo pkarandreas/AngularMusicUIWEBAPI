@@ -1,0 +1,41 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+html, body { height: 90%; }
+
+.TransparentBox{
+  background-color: #ffffff;
+  color: black;
+  font-weight: bolder;
+  opacity: 0.7;
+}
+
+body {
+  background-color: rgb(158, 150, 150);
+  font-family: 'Dancing Script', cursive;
+  justify-content: center;
+  /* font-family: Roboto, "Helvetica Neue", sans-serif; */
+  font-size:larger;
+  margin-top: 5em;
+  margin-bottom: 4em;
+}
+.wallPaper{
+  background-image: url('./assets/media/wallpaper.jpg');
+  background-color: rgba(255, 255, 255, 0.486);
+  background-blend-mode: overlay;
+  /* opacity: 0.6; */
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  /* z-index:-1; */
+}
+footer {
+  background-color: #bfc2c4;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: large;
+}
+.container-fluid{
+  overflow: hidden;
+  }

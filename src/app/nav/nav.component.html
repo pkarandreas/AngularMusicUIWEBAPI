@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #bfc2c4;margin-bottom: 8em;">
+  <a class="navbar-brand" href="#">
+    <img src="../../assets/media/hand.png" width="40" height="50" class="d-inline-block align-center" alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navMenu">
+    <ul class="navbar-nav myFonts">
+      <li class="nav-item" routerLinkActive="active current">
+        <a class="nav-link" routerLink="/">Groups <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="/songs">Songs</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active current">
+        <a class="nav-link" routerLink='/genres'>Music Genres</a>
+        <!-- <a class="nav-link" [routerLink]="['/about',name]">About</a> -->
+      </li>
+    </ul>
+  </div>
+</nav>

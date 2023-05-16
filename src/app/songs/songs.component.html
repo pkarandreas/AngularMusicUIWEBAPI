@@ -1,0 +1,27 @@
+<div class="container m-5mx-auto" style="display: block;">
+  <div *ngIf="songArray.length !=0" class="container TransparentBox m-5 border border-primary rounded mx-auto" style="display: inline-block;">
+    <div class="row m-3 mx-auto" style="background-color: rgb(209, 206, 206);box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+    <h1 class="text-center" style="font-weight: bolder;color: red;">{{title}}</h1>
+    </div>
+    <div *ngIf="songArray.length >0 " class="row">
+      <div class="col-sm-12">
+          <table  datatable [dtOptions]="dataTableOptions" [dtTrigger]="dtTrigger" class="table table-striped border border-primary">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Song Title</th>
+                <th>Group Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let song of songArray; let i =index">
+                <td>{{i}}</td>
+                <td><a [href]="song.songURL" target="_blank">{{song.songName }}</a></td>
+                <td>{{getGroupString(song.groupId)}}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>

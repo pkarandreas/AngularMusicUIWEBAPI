@@ -1,0 +1,10 @@
+.myFonts{
+  font-size: larger;
+}
+.navbar{
+  overflow: hidden;
+  background-color: aqua;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}

@@ -1,0 +1,55 @@
+<form [formGroup]="groupForm" (ngSubmit)="onSubmit()">
+  <div *ngIf="group || data.id === 0">
+    <h4 mat-dialog-title class="Title text-center">{{title}}</h4>
+    <mat-dialog-content>
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="row m-2">
+                <div class="col-6">
+                  <label for="id">Group ID :</label>
+                </div>
+                <div class="col-6">
+                  <!-- <input type="text" formControlName="id" readonly class="form-control"> -->
+                  <label>{{data.id!=0?data.id:""}}</label>
+                </div>
+              </div>
+                <div class="row m-2">
+                  <div class="col-6">
+                    <label for="groupName">Group Name :</label>
+                  </div>
+                  <div class="col-6">
+                    <input type="text" formControlName="groupName"  class="form-control">
+                  </div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-6">
+                    <label for="description">Description :</label>
+                  </div>
+                  <div class="col-6">
+                    <textarea formControlName="description" class="form-control">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-6">
+                    <label for="groupGenreID">Genre :</label>
+                  </div>
+                  <div class="col-6">
+                   <select formControlName="groupGenreID" class="form-control">
+                        <option *ngFor="let item of genreArray" [value]="item.id">{{item.genreName}}</option>
+                  </select>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button type="submit" mat-raised-button mat-dialog-close mat-dialog-close="save" color="primary">Submit</button>
+      <button mat-raised-button color="accent"  mat-dialog-close mat-dialog-close="cancel" (click)="onNoClick()"><mat-icon fontIcon="cancel"></mat-icon>Cancel</button>
+    </mat-dialog-actions>
+    </div>
+  </form>
+
